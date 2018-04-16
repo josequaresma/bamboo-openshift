@@ -80,20 +80,7 @@
           "contextDir": "${CONTEXT_DIR}"
         },
         "strategy": {
-          "type": "Source",
-          "sourceStrategy": {
-            "from": {
-              "kind": "ImageStreamTag",
-              "namespace": "${NAMESPACE}",
-              "name": "nodejs:6"
-            },
-            "env":  [
-              {
-                  "name": "NPM_MIRROR",
-                  "value": "${NPM_MIRROR}"
-              }
-            ]
-          }
+          "type": "Source"
         },
         "output": {
           "to": {
@@ -103,27 +90,9 @@
         },
         "triggers": [
           {
-            "type": "ImageChange"
-          },
-          {
             "type": "ConfigChange"
-          },
-          {
-            "type": "GitHub",
-            "github": {
-              "secret": "${GITHUB_WEBHOOK_SECRET}"
-            }
-          },
-          {
-            "type": "Generic",
-            "generic": {
-              "secret": "${GENERIC_WEBHOOK_SECRET}"
-            }
           }
-        ],
-        "postCommit": {
-          "script": "npm test"
-        }
+        ]
       }
     },
     {
@@ -229,7 +198,7 @@
       "displayName": "Memory Limit",
       "description": "Maximum amount of memory the container can use.",
       "required": true,
-      "value": "512Mi"
+      "value": "2048Mi"
     },
     {
       "name": "SOURCE_REPOSITORY_URL",
@@ -253,26 +222,6 @@
       "name": "APPLICATION_DOMAIN",
       "displayName": "Application Hostname",
       "description": "The exposed hostname that will route to the Bamboo Server service, if left blank a value will be defaulted.",
-      "value": ""
-    },
-    {
-      "name": "GITHUB_WEBHOOK_SECRET",
-      "displayName": "GitHub Webhook Secret",
-      "description": "Github trigger secret.  A difficult to guess string encoded as part of the webhook URL.  Not encrypted.",
-      "generate": "expression",
-      "from": "[a-zA-Z0-9]{40}"
-    },
-    {
-      "name": "GENERIC_WEBHOOK_SECRET",
-      "displayName": "Generic Webhook Secret",
-      "description": "A secret string used to configure the Generic webhook.",
-      "generate": "expression",
-      "from": "[a-zA-Z0-9]{40}"
-    },
-    {
-      "name": "NPM_MIRROR",
-      "displayName": "Custom NPM Mirror URL",
-      "description": "The custom NPM mirror URL",
       "value": ""
     }
   ]
