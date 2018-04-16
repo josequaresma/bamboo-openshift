@@ -16,13 +16,13 @@ RUN set -x \
     && apt-get clean \
     && mkdir -p                "${BAMBOO_HOME}" \
     && mkdir -p                "${BAMBOO_HOME}/caches/indexes" \
-    && chmod -R 700            "${BAMBOO_HOME}" \
+    && chmod -R 777            "${BAMBOO_HOME}" \
 #    && chown -R daemon:daemon  "${BAMBOO_HOME}" \
     && mkdir -p                "${BAMBOO_INSTALL}/conf/Catalina" \
     && curl -SL https://www.atlassian.com/software/bamboo/downloads/binary/atlassian-bamboo-$BAMBOO_VERSION.tar.gz -o /tmp/atlassian-bamboo-$BAMBOO_VERSION.tar.gz \
     && tar zxvf /tmp/atlassian-bamboo-$BAMBOO_VERSION.tar.gz -C $BAMBOO_INSTALL --strip=1 --no-same-owner \
     && rm /tmp/atlassian-bamboo-$BAMBOO_VERSION.tar.gz \
-    && chmod -R 700            "${BAMBOO_INSTALL}"
+    && chmod -R 777            "${BAMBOO_INSTALL}"
 #    && chown -R daemon:daemon  "${BAMBOO_INSTALL}"
 
 # Use the default unprivileged account. This could be considered bad practice
