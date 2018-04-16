@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Exit on errors
-set -e
+#set -e
 
 BAMBOO_INSTALLER=$BAMBOO_AGENT_INSTALL/$BAMBOO_AGENT_JAR
 if [ -f $BAMBOO_INSTALLER ]; then
@@ -20,7 +20,7 @@ BAMBOO_AGENT=$BAMBOO_AGENT_HOME/bin/bamboo-agent.sh
 if [ ! -f $BAMBOO_AGENT ]; then
   # Run the agent installer
   echo "-> Running Bamboo Installer ..."
-  java -jar $BAMBOO_AGENT_INSTALL/$BAMBOO_AGENT_JAR http://$BAMBOO_SERVER:8085/agentServer/
+  java -jar $BAMBOO_AGENT_INSTALL/$BAMBOO_AGENT_JAR http://$BAMBOO_SERVER:8085/agentServer/ -Dbamboo.home=$BAMBOO_AGENT_HOME
 fi
 
 # Fix permissions
@@ -29,3 +29,6 @@ chmod -R 777 $BAMBOO_AGENT
 
 # Run the Bamboo agent
 # $BAMBOO_AGENT console
+
+# Making sure script does not terminate
+while true; sleep 3600; done

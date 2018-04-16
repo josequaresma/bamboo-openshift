@@ -11,4 +11,4 @@ Welcome to the repo on getting bamboo server and bamboo agent setup in OpenShift
 - oc new-app https://github.com/josequaresma/bamboo-openshift --context-dir=bamboo-server/dockerfile --name=bamboo-server -l name=bamboo-server
 ## Creating Bamboo Server the simple way:
 - oc project YOUR_PROJECT
-- oc new-app https://github.com/josequaresma/bamboo-openshift --context-dir=bamboo-server/dockerfile --name=bamboo-server -l name=bamboo-server
+- oc new-app https://github.com/josequaresma/bamboo-openshift --context-dir=bamboo-agent/dockerfile --name=bamboo-agent -l name=bamboo-agent
