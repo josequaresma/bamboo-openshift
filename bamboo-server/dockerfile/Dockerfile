@@ -31,7 +31,7 @@ RUN set -x \
 #USER daemon:daemon
 
 # Expose web and agent ports
-EXPOSE 8080
+EXPOSE 8085
 EXPOSE 54663
 
 # Set volume mount points for installation and home directory. Changes to the
