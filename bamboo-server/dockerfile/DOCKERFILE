@@ -1,5 +1,5 @@
 FROM java:8
-MAINTAINER Jose Quaresma (@josequaresma)
+MAINTAINER Jose Quaresma (@josequaresma) 
 
 # Based from Audrey Roy Greenfeld (@audreyr): https://github.com/audreyr/docker-bamboo-server/blob/master/Dockerfile
 
