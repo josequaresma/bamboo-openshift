@@ -19,8 +19,13 @@ chmod -R 777 $BAMBOO_INSTALLER
 BAMBOO_AGENT=$BAMBOO_AGENT_HOME/bin/bamboo-agent.sh
 if [ ! -f $BAMBOO_AGENT ]; then
   # Run the agent installer
-  echo "-> Running Bamboo Installer ..."
-  java -Dbamboo.home=$BAMBOO_AGENT_HOME -jar $BAMBOO_AGENT_INSTALL/$BAMBOO_AGENT_JAR http://$BAMBOO_SERVER:8085/agentServer/
+  if [[ -z $BAMBOO_TOKEN ]]; then
+    echo "-> Running Bamboo Installer without token since BAMBOO_TOKEN is not set as env variable..."
+    java -Dbamboo.home=$BAMBOO_AGENT_HOME -jar $BAMBOO_AGENT_INSTALL/$BAMBOO_AGENT_JAR http://$BAMBOO_SERVER:8085/agentServer/
+  else
+    echo "-> Running Bamboo Installer with token since BAMBOO_TOKEN is set as env variable..."
+    java -Dbamboo.home=$BAMBOO_AGENT_HOME -jar $BAMBOO_AGENT_INSTALL/$BAMBOO_AGENT_JAR http://$BAMBOO_SERVER:8085/agentServer/ -t $BAMBOO_TOKEN
+  fi
 fi
 
 # Fix permissions
