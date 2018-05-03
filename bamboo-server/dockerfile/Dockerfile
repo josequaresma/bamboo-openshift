@@ -6,7 +6,7 @@ MAINTAINER Jose Quaresma (@josequaresma)
 # Config vars
 ENV BAMBOO_HOME /var/atlassian/bamboo
 ENV BAMBOO_INSTALL /opt/atlassian/bamboo
-ENV BAMBOO_VERSION 6.4.1
+ENV BAMBOO_VERSION 6.5.0
 
 # Install Atlassian Bamboo and helper tools and setup initial home
 # directory structure.
